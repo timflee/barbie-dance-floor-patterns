@@ -24,6 +24,8 @@ function initVariables () {
     tileDisplay.setBrightness(25)
     tileDisplay.clear()
     tileDisplay.show()
+    period = 1
+    period2 = 25
     music.playTone(262, music.beat(BeatFraction.Whole))
     colour2 = Kitronik_Zip_Tile.colors(ZipLedColors.Red)
     rectangle1 = [
@@ -100,6 +102,8 @@ function initVariables () {
     ]
 }
 let colour2 = 0
+let period2 = 0
+let period = 0
 let tileDisplay: Kitronik_Zip_Tile.ZIPTileDisplay = null
 let rectangle4: number[][] = []
 let rectangle3: number[][] = []
@@ -109,11 +113,19 @@ let rectangleToDraw: number[][] = []
 initVariables()
 basic.forever(function () {
     while (true) {
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 1, 200, true)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 2, 200, true)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 3, 200, false)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 4, 2000, true)
-        basic.pause(500)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1, period, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 1, period2, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Orange), 2, period, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 2, period2, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 3, period, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 3, period2, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Green), 4, period, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 4, period2, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 3, period, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 3, period2, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Indigo), 2, period, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 2, period2, false)
+        basic.pause(period)
         tileDisplay.clear()
         tileDisplay.show()
     }
