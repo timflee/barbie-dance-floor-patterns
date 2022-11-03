@@ -1,4 +1,4 @@
-function drawRectangles (colour: number, rectangleNumber: number, speed: number) {
+function drawRectangles (colour: number, rectangleNumber: number, speed: number, dynamicRefresh: boolean) {
     if (rectangleNumber == 1) {
         rectangleToDraw = rectangle1
     } else if (rectangleNumber == 2) {
@@ -6,18 +6,25 @@ function drawRectangles (colour: number, rectangleNumber: number, speed: number)
     } else if (rectangleNumber == 3) {
         rectangleToDraw = rectangle3
     } else {
-        rectangleToDraw = rectangle3
+        rectangleToDraw = rectangle4
     }
     for (let value of rectangleToDraw) {
         tileDisplay.setMatrixColor(value[0], value[1], colour)
+        if (dynamicRefresh) {
+            tileDisplay.show()
+        }
+        basic.pause(speed / rectangleToDraw.length)
+    }
+    if (!(dynamicRefresh)) {
         tileDisplay.show()
-        basic.pause(speed)
     }
 }
 function initVariables () {
-    tileDisplay = Kitronik_Zip_Tile.createZIPTileDisplay(8, 8, Kitronik_Zip_Tile.UBitLocations.Hidden)
+    tileDisplay = Kitronik_Zip_Tile.createZIPTileDisplay(1, 1, Kitronik_Zip_Tile.UBitLocations.Hidden)
+    tileDisplay.setBrightness(25)
     tileDisplay.clear()
     tileDisplay.show()
+    music.playTone(262, music.beat(BeatFraction.Whole))
     colour2 = Kitronik_Zip_Tile.colors(ZipLedColors.Red)
     rectangle1 = [
     [3, 3],
@@ -61,9 +68,40 @@ function initVariables () {
     [1, 3],
     [1, 2]
     ]
+    rectangle4 = [
+    [0, 0],
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [7, 1],
+    [7, 2],
+    [7, 3],
+    [7, 4],
+    [7, 5],
+    [7, 6],
+    [7, 7],
+    [6, 7],
+    [5, 7],
+    [4, 7],
+    [3, 7],
+    [2, 7],
+    [1, 7],
+    [0, 7],
+    [0, 6],
+    [0, 5],
+    [0, 4],
+    [0, 3],
+    [0, 2],
+    [0, 1]
+    ]
 }
 let colour2 = 0
 let tileDisplay: Kitronik_Zip_Tile.ZIPTileDisplay = null
+let rectangle4: number[][] = []
 let rectangle3: number[][] = []
 let rectangle2: number[][] = []
 let rectangle1: number[][] = []
@@ -71,8 +109,11 @@ let rectangleToDraw: number[][] = []
 initVariables()
 basic.forever(function () {
     while (true) {
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1, 100)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Orange), 2, 50)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 1, 200, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 2, 200, true)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 3, 200, false)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 4, 2000, true)
+        basic.pause(500)
         tileDisplay.clear()
         tileDisplay.show()
     }
