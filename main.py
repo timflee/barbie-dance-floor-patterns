@@ -8,12 +8,14 @@ def drawRectangles(colour: number, rectangleNumber: number, speed: number):
         rectangleToDraw = rectangle3
     else:
         rectangleToDraw = rectangle3
-        for value in rectangleToDraw:
-            tileDisplay.set_matrix_color(value[0], value[1], colour)
-            basic.pause(speed)
+    for value in rectangleToDraw:
+        tileDisplay.set_matrix_color(value[0], value[1], colour)
+        basic.pause(speed)
 def initVariables():
     global tileDisplay, colour2, rectangle1, rectangle2, rectangle3
     tileDisplay = Kitronik_Zip_Tile.create_zip_tile_display(8, 8, Kitronik_Zip_Tile.UBitLocations.HIDDEN)
+    tileDisplay.clear()
+    tileDisplay.show()
     colour2 = Kitronik_Zip_Tile.colors(ZipLedColors.RED)
     rectangle1 = [[3, 3], [4, 3], [4, 4], [3, 4]]
     rectangle2 = [[2, 2],
@@ -58,5 +60,6 @@ initVariables()
 
 def on_forever():
     while True:
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.RED), 1, 1)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.RED), 1, 100)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.ORANGE), 2, 50)
 basic.forever(on_forever)

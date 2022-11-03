@@ -10,11 +10,14 @@ function drawRectangles (colour: number, rectangleNumber: number, speed: number)
     }
     for (let value of rectangleToDraw) {
         tileDisplay.setMatrixColor(value[0], value[1], colour)
+        tileDisplay.show()
         basic.pause(speed)
     }
 }
 function initVariables () {
     tileDisplay = Kitronik_Zip_Tile.createZIPTileDisplay(8, 8, Kitronik_Zip_Tile.UBitLocations.Hidden)
+    tileDisplay.clear()
+    tileDisplay.show()
     colour2 = Kitronik_Zip_Tile.colors(ZipLedColors.Red)
     rectangle1 = [
     [3, 3],
@@ -70,5 +73,7 @@ basic.forever(function () {
     while (true) {
         drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1, 100)
         drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Orange), 2, 50)
+        tileDisplay.clear()
+        tileDisplay.show()
     }
 })
