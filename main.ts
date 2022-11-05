@@ -1,3 +1,18 @@
+function drawRectangles2 (colour: number, rectangleNumber: number, speed: number, dynamicRefresh: boolean) {
+    if (rectangleNumber == 1) {
+        rectangleToDraw = rectangle1
+    } else if (rectangleNumber == 2) {
+        rectangleToDraw = rectangle2
+    } else if (rectangleNumber == 3) {
+        rectangleToDraw = rectangle3
+    } else {
+        rectangleToDraw = rectangle4
+    }
+    for (let value of rectangleToDraw) {
+        tileDisplay.setMatrixColor(value[0], value[1], colour)
+    }
+    tileDisplay.show()
+}
 function drawRectangles (colour: number, rectangleNumber: number, speed: number, dynamicRefresh: boolean) {
     if (rectangleNumber == 1) {
         rectangleToDraw = rectangle1
