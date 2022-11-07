@@ -1,14 +1,20 @@
 function Seq1 () {
     drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1)
     basic.pause(short)
+    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 1)
+    basic.pause(long)
     drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 2)
     basic.pause(short)
-    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 3)
+    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 2)
+    basic.pause(long)
+    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Purple), 3)
     basic.pause(short)
+    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 3)
+    basic.pause(long)
     drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Green), 4)
     basic.pause(short)
-    tileDisplay.clear()
-    tileDisplay.show()
+    drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 4)
+    basic.pause(long)
 }
 function Seq0 () {
     drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1)
@@ -139,27 +145,22 @@ let rectangle1: number[][] = []
 let rectangleToDraw: number[][] = []
 let tileDisplay: Kitronik_Zip_Tile.ZIPTileDisplay = null
 let short = 0
-let long = 2000
+let long = 0
+long = 2000
 short = 500
 initVariables()
 tileDisplay.setBrightness(50)
 basic.forever(function () {
     while (true) {
         drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Red), 1)
-        basic.pause(short)
+        basic.pause(long)
         drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 1)
-        basic.pause(long)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Blue), 2)
         basic.pause(short)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 2)
-        basic.pause(long)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Purple), 3)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 2)
         basic.pause(short)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 3)
+        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Yellow), 3)
         basic.pause(long)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Green), 4)
-        basic.pause(short)
-        drawRectangles(Kitronik_Zip_Tile.colors(ZipLedColors.Black), 4)
-        basic.pause(long)
+        tileDisplay.clear()
+        tileDisplay.show()
     }
 })
